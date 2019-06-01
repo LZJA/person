@@ -691,10 +691,10 @@ export default {
       if (this.bstop) { // this.bstop防止预加载后面日历数据重置selstart和selend
         if (this.selectedDate && this.selectedDate.length <= 0) {
           this.selectedDate = JSON.parse(JSON.stringify(this.selectDate));
-        }
-        if (this.normsDays >= 7) {
-          this.selstart = new Date(new Date(this.selectedDate[0].date).setHours(0, 0, 0, 0)).getTime();
-          this.selend = new Date(new Date(this.selectedDate[this.selectedDate.length - 1].date).setHours(0, 0, 0, 0)).getTime();
+          if (this.normsDays >= 7) {
+            this.selstart = new Date(new Date(this.selectedDate[0].date).setHours(0, 0, 0, 0)).getTime();
+            this.selend = new Date(new Date(this.selectedDate[this.selectedDate.length - 1].date).setHours(0, 0, 0, 0)).getTime();
+          }
         }
         // 已选 渲染
         if (this.selectedDate.length) {
